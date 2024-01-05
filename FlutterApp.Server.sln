@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlutterApp.Server.Host", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlutterApp.Server.Database", "FlutterApp.Server.Database\FlutterApp.Server.Database.csproj", "{6F0D5A70-8876-4A50-B5BB-AEB2FE6432A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlutterApp.Server.Client", "FlutterApp.Server.Client\FlutterApp.Server.Client.csproj", "{B2724355-8D29-495E-A308-5B51F8E49C9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{6F0D5A70-8876-4A50-B5BB-AEB2FE6432A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F0D5A70-8876-4A50-B5BB-AEB2FE6432A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F0D5A70-8876-4A50-B5BB-AEB2FE6432A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2724355-8D29-495E-A308-5B51F8E49C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2724355-8D29-495E-A308-5B51F8E49C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2724355-8D29-495E-A308-5B51F8E49C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2724355-8D29-495E-A308-5B51F8E49C9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
