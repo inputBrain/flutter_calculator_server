@@ -42,7 +42,7 @@ public abstract class AbstractRepository<T> where T : AbstractModel
     }
     
     
-    async protected Task<T> FindOne(int id)
+    async protected Task<T?> FindOne(int id)
     {
         var model = await DbModel.FindAsync(id);
         return model;
