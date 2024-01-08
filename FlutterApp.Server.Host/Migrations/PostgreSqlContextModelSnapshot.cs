@@ -30,10 +30,10 @@ namespace FlutterApp.Server.Host.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset?>("PremiumEndedAt")
+                    b.Property<DateTime?>("PremiumEndedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTimeOffset?>("PremiumStartedAt")
+                    b.Property<DateTime?>("PremiumStartedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("UserId")
@@ -55,7 +55,7 @@ namespace FlutterApp.Server.Host.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("FirstName")
@@ -87,7 +87,8 @@ namespace FlutterApp.Server.Host.Migrations
 
             modelBuilder.Entity("FlutterApp.Server.Database.User.UserModel", b =>
                 {
-                    b.Navigation("Premium");
+                    b.Navigation("Premium")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlutterApp.Server.Host.Migrations
 {
     [DbContext(typeof(PostgreSqlContext))]
-    [Migration("20240104130358_user")]
+    [Migration("20240108150700_user")]
     partial class user
     {
         /// <inheritdoc />
@@ -33,7 +33,7 @@ namespace FlutterApp.Server.Host.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("FirstName")

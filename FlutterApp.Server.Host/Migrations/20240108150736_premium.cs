@@ -19,8 +19,8 @@ namespace FlutterApp.Server.Host.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<int>(type: "integer", nullable: false),
-                    PremiumStartedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    PremiumEndedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true)
+                    PremiumStartedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    PremiumEndedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {

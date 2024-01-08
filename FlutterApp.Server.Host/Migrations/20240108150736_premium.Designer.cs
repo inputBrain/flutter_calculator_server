@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlutterApp.Server.Host.Migrations
 {
     [DbContext(typeof(PostgreSqlContext))]
-    [Migration("20240104130455_premium")]
+    [Migration("20240108150736_premium")]
     partial class premium
     {
         /// <inheritdoc />
@@ -33,10 +33,10 @@ namespace FlutterApp.Server.Host.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset?>("PremiumEndedAt")
+                    b.Property<DateTime?>("PremiumEndedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTimeOffset?>("PremiumStartedAt")
+                    b.Property<DateTime?>("PremiumStartedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("UserId")
@@ -58,7 +58,7 @@ namespace FlutterApp.Server.Host.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("FirstName")
@@ -90,7 +90,8 @@ namespace FlutterApp.Server.Host.Migrations
 
             modelBuilder.Entity("FlutterApp.Server.Database.User.UserModel", b =>
                 {
-                    b.Navigation("Premium");
+                    b.Navigation("Premium")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
