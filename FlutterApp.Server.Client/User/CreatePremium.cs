@@ -16,6 +16,6 @@ public sealed class CreatePremium
 
     public sealed class Response : AbstractResponse
     {
-        public Payload.User.User User { get; set; }
+        public Payload.User.Premium Premium { get; set; }
     }
 }
