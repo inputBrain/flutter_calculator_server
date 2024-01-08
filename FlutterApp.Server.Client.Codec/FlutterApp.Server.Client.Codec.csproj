@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FlutterApp.Server.Client\FlutterApp.Server.Client.csproj" />
+      <ProjectReference Include="..\FlutterApp.Server.Database\FlutterApp.Server.Database.csproj" />
+    </ItemGroup>
+
+</Project>
