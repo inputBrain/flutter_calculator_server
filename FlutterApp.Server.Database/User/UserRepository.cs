@@ -23,4 +23,16 @@ public class UserRepository : AbstractRepository<UserModel>, IUserRepository
         
         return result;
     }
+    
+    
+    public async Task<UserModel> GetOne(int userId)
+    {
+        var model = await FindOne(userId);
+        if (model == null)
+        {
+            throw new Exception("User not found");
+        }
+
+        return model;
+    }
 }
