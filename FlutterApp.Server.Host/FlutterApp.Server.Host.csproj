@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\FlutterApp.Server.Client\FlutterApp.Server.Client.csproj" />
       <ProjectReference Include="..\FlutterApp.Server.Database\FlutterApp.Server.Database.csproj" />
     </ItemGroup>
 
