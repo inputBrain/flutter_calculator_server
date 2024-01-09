@@ -9,22 +9,22 @@ public class PremiumModel : AbstractModel
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
-    
+
     public int UserId { get; set; }
     
     [ForeignKey("UserId")]
     public UserModel User { get; set; }
     
-    public DateTimeOffset? PremiumStartedAt { get; set; }
+    public DateTime? PremiumStartedAt { get; set; }
     
-    public DateTimeOffset? PremiumEndedAt { get; set; }
+    public DateTime? PremiumEndedAt { get; set; }
 
     
-    public static PremiumModel CreateModel(int userId, DateTime startedAt, DateTime endedAt)
+    public static PremiumModel CreateModel(UserModel user, DateTime? startedAt, DateTime? endedAt)
     {
         return new PremiumModel
         {
-            UserId = userId,
+            User = user,
             PremiumStartedAt = startedAt,
             PremiumEndedAt = endedAt
         };

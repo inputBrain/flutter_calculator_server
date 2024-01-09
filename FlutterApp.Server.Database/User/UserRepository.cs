@@ -35,4 +35,12 @@ public class UserRepository : AbstractRepository<UserModel>, IUserRepository
 
         return model;
     }
+    
+    
+    public async Task<bool> UpdateHasPremium(UserModel model, bool hasPremium)
+    {
+        model.HasPremium = hasPremium;
+        var result = await UpdateModelAsync(model);
+        return true;
+    }
 }

@@ -17,9 +17,9 @@ public class UserModel : AbstractModel
     
     public bool HasPremium { get; set; }
     
-    public PremiumModel? Premium { get; set; }
+    public PremiumModel Premium { get; set; }
     
-    public DateTimeOffset CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
 
     public static UserModel CreateModel(string firstName, string lastName)

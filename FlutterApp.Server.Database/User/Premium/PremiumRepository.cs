@@ -11,9 +11,9 @@ public class PremiumRepository : AbstractRepository<PremiumModel>, IPremiumRepos
     }
     
     
-    public async Task<PremiumModel> Create(int userId, DateTime startedAt, DateTime endedAt)
+    public async Task<PremiumModel> Create(UserModel user, DateTime? startedAt, DateTime? endedAt)
     {
-        var model = PremiumModel.CreateModel(userId, startedAt, endedAt);
+        var model = PremiumModel.CreateModel(user, startedAt, endedAt);
 
         var result = await CreateModelAsync(model);
         if (result == null)
