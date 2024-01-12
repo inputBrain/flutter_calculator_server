@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\AxLink.Service\AxLink.Service.csproj" />
       <ProjectReference Include="..\FlutterApp.Server.Client.Codec\FlutterApp.Server.Client.Codec.csproj" />
       <ProjectReference Include="..\FlutterApp.Server.Client\FlutterApp.Server.Client.csproj" />
       <ProjectReference Include="..\FlutterApp.Server.Database\FlutterApp.Server.Database.csproj" />
