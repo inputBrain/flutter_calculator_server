@@ -1,3 +1,4 @@
+using FlutterApp.Server.Database.SocialIdentity;
 using FlutterApp.Server.Database.User;
 using FlutterApp.Server.Database.User.Premium;
 
@@ -7,4 +8,5 @@ public interface IDatabaseContainer
 {
     IUserRepository UserRepository { get; }
     IPremiumRepository PremiumRepository { get; }
+    ISocialIdentityRepository SocialIdentityRepository { get; }
 }
