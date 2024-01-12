@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using FlutterApp.Server.Database.SocialIdentity;
 using FlutterApp.Server.Database.User.Premium;
 
 namespace FlutterApp.Server.Database.User;
@@ -18,6 +19,8 @@ public class UserModel : AbstractModel
     public bool HasPremium { get; set; }
     
     public PremiumModel Premium { get; set; }
+    
+    public SocialIdentityModel SocialIdentity { get; set; }
     
     public DateTime CreatedAt { get; set; }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using AxLink.Service;
 using FlutterApp.Server.Client.Auth;
 using FlutterApp.Server.Database;
 using Microsoft.AspNetCore.Authorization;
@@ -10,11 +11,15 @@ namespace FlutterApp.Server.Host.Controllers.Client;
 
 public class AuthController : AbstractClientController<AuthController>
 {
-    public AuthController(ILogger<AuthController> logger, IDatabaseContainer db) : base(logger, db)
+    private readonly FirebaseService _firebaseService;
+    
+    
+    public AuthController(ILogger<AuthController> logger, IDatabaseContainer db, FirebaseService firebaseService) : base(logger, db)
     {
+        _firebaseService = firebaseService;
     }
 
-    
+
     [HttpPost]
     [AllowAnonymous]
     [ProducesResponseType(typeof(AuthByFirebase.Response), 200)]
@@ -24,7 +29,12 @@ public class AuthController : AbstractClientController<AuthController>
         {
             return BadRequest("Auth Error");
         }
-        
+
+        var socialUser = await _firebaseService.GetUserInfo(request.FirebaseToken);
+        if (socialUser == null)
+        {
+            throw new Exception("Invalid Firebase token");
+        }
         var user = await Db.UserRepository.
     }
 }
