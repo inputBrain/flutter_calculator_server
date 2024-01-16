@@ -5,6 +5,7 @@ using FlutterApp.Server.Client.Payload.User;
 using FlutterApp.Server.Client.User;
 using FlutterApp.Server.Database;
 using FlutterApp.Server.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -30,9 +31,10 @@ public class UserController : AbstractClientController<UserController>
 
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<CreateUser.Response> CreateUser([FromBody] CreateUser request)
     {
-        var model = await Db.UserRepository.Create(request.FirstName, request.LastName);
+        var model = await Db.UserRepository.Create(request.FirstName, request.LastName, request.Phone, DateTime.Now);
 
         return new CreateUser.Response
         {
