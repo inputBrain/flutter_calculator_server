@@ -3,6 +3,7 @@ using System.IO;
 using AxLink.Service;
 using FlutterApp.Server.Client;
 using FlutterApp.Server.Database;
+using FlutterApp.Server.UseCase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +33,8 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        ConfigureSwagger(services);
+        
         Type typeOfContent = typeof(Startup);
         services.AddDbContext<PostgreSqlContext>(
             opt => opt.UseNpgsql(
@@ -48,37 +51,15 @@ public class Startup
             Directory.GetCurrentDirectory() + firebaseConfig?.AdminConfigPath
         );
         
-        string GetSchemaId(Type t)
-        {
-            var messagesRootNamespace = typeof(AbstractResponse).Namespace;
-            var messagesStartPrefix = messagesRootNamespace + '.';
-            
-            var fullname = t.FullName;
-
-            if (fullname.StartsWith(messagesStartPrefix) == false)
-            {
-                var value = typeof(IFormFile).Namespace;
-                if (value != null && fullname.StartsWith(value) == false)
-                {
-                    throw new Exception(
-                        $"Messages must be in {messagesRootNamespace} namespace, but this message is not: {fullname}"
-                    );
-                }
-            }
-
-            var prepared = fullname.Substring(messagesStartPrefix.Length).Replace('+', 'R');
-            return prepared;
-        }
-
         services.AddScoped<IDatabaseContainer, DatabaseContainer>();
 
+        services.AddScoped<IUseCaseContainer>(sp => Factory.Create(
+            _loggerFactory, 
+            sp.GetRequiredService<IDatabaseContainer>(), 
+            firebaseService)
+        );
+        
         services.AddControllers();
-        services.AddSwaggerGen(
-            c =>
-            {
-                c.CustomSchemaIds(GetSchemaId);
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "FlutterApp.Host", Version = "v1"});
-            });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,5 +79,37 @@ public class Startup
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+    }
+
+
+    public void ConfigureSwagger(IServiceCollection services)
+    {
+        string GetSchemaId(Type t)
+        {
+            var messagesRootNamespace = typeof(AbstractResponse).Namespace;
+            var messagesStartPrefix = messagesRootNamespace + '.';
+
+            var fullname = t.FullName;
+
+            if (fullname.StartsWith(messagesStartPrefix) == false)
+            {
+                var value = typeof(IFormFile).Namespace;
+                if (value != null && fullname.StartsWith(value) == false)
+                {
+                    throw new Exception($"Messages must be in {messagesRootNamespace} namespace, but this message is not: {fullname}");
+                }
+            }
+
+            var prepared = fullname.Substring(messagesStartPrefix.Length).Replace('+', 'R');
+            return prepared;
+        }
+
+        services.AddSwaggerGen(
+            c =>
+            {
+                c.CustomSchemaIds(GetSchemaId);
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "FlutterApp.Host", Version = "v1"});
+            }
+        );
     }
 }
