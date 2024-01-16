@@ -5,6 +5,8 @@ public sealed class CreateUser
     public string FirstName { get; set; }
     public string LastName { get; set; }
 
+    public string Phone { get; set; }
+
 
     public sealed class Response
     {

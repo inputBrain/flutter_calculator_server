@@ -12,28 +12,30 @@ public class UserModel : AbstractModel
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
-    public string FirstName { get; set; }
+    public string? FirstName { get; set; }
     
-    public string LastName { get; set; }
+    public string? LastName { get; set; }
+    
+    public string? Phone { get; set; }
     
     public bool HasPremium { get; set; }
     
-    public PremiumModel Premium { get; set; }
+    public PremiumModel? Premium { get; set; }
     
-    public SocialIdentityModel SocialIdentity { get; set; }
+    public SocialIdentityModel? SocialIdentity { get; set; }
     
     public DateTime CreatedAt { get; set; }
 
 
-    public static UserModel CreateModel(string firstName, string lastName)
+    public static UserModel CreateModel(string? firstName, string? lastName, string? phone, DateTime createdAt)
     {
         return new UserModel
         {
             FirstName = firstName,
             LastName = lastName,
+            Phone = phone,
             HasPremium = false,
-            Premium = new PremiumModel(),
-            CreatedAt = DateTime.UtcNow
+            CreatedAt = createdAt
         };
     }
 }
