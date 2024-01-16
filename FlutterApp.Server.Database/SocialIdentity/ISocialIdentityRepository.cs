@@ -1,7 +1,19 @@
-using System.ComponentModel.DataAnnotations;
+using System;
+using System.Threading.Tasks;
+using FlutterApp.Server.Database.User;
+using FlutterApp.Server.Model.SocialIdentity;
 
 namespace FlutterApp.Server.Database.SocialIdentity;
 
 public interface ISocialIdentityRepository
 {
+    Task<SocialIdentityModel> Create(
+        int userId,
+        string uid,
+        string socialUid,
+        SocialType socialType,
+        DateTime createdAt
+    );
+    
+    Task<(SocialIdentityModel?, UserModel?)> FindByUid(string uid);
 }
