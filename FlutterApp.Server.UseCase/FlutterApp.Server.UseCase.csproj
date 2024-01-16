@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AxLink.Service\AxLink.Service.csproj" />
+      <ProjectReference Include="..\FlutterApp.Server.Database\FlutterApp.Server.Database.csproj" />
+    </ItemGroup>
+
+</Project>

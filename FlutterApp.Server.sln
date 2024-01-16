@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlutterApp.Server.Model", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxLink.Service", "AxLink.Service\AxLink.Service.csproj", "{6E1387BC-3D2F-4084-947A-3E1046542B33}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlutterApp.Server.UseCase", "FlutterApp.Server.UseCase\FlutterApp.Server.UseCase.csproj", "{DF4EC0DE-028A-4383-B9D4-3BA199A2B154}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{6E1387BC-3D2F-4084-947A-3E1046542B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E1387BC-3D2F-4084-947A-3E1046542B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E1387BC-3D2F-4084-947A-3E1046542B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF4EC0DE-028A-4383-B9D4-3BA199A2B154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4EC0DE-028A-4383-B9D4-3BA199A2B154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4EC0DE-028A-4383-B9D4-3BA199A2B154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4EC0DE-028A-4383-B9D4-3BA199A2B154}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

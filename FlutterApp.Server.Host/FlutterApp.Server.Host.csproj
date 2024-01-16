@@ -19,6 +19,7 @@
       <ProjectReference Include="..\FlutterApp.Server.Client.Codec\FlutterApp.Server.Client.Codec.csproj" />
       <ProjectReference Include="..\FlutterApp.Server.Client\FlutterApp.Server.Client.csproj" />
       <ProjectReference Include="..\FlutterApp.Server.Database\FlutterApp.Server.Database.csproj" />
+      <ProjectReference Include="..\FlutterApp.Server.UseCase\FlutterApp.Server.UseCase.csproj" />
       <ProjectReference Include="..\FlutterApp.Server.Utils\FlutterApp.Server.Utils.csproj" />
     </ItemGroup>
 
