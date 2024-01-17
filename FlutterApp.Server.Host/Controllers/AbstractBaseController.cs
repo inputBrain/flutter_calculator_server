@@ -27,7 +27,7 @@ public abstract class AbstractBaseController<T> : ControllerBase
     }
 
 
-    protected IActionResult SendOk(object response)
+    protected IActionResult SendOk(object? response)
     {
         return Ok(response);
     }

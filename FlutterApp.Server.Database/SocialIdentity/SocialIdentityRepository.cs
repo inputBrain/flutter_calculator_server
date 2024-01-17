@@ -30,7 +30,7 @@ public class SocialIdentityRepository : AbstractRepository<SocialIdentityModel>,
     
     public async Task<(SocialIdentityModel?, UserModel?)> FindByUid(string uid)
     {
-        var query = DbModel.Include(x => x.User);
+        var query = DbModel.Include(x => x.User).ThenInclude(x => x.Premium);
 
         var model = await query.FirstOrDefaultAsync(_ => _.Uid == uid);
         if (model == null)

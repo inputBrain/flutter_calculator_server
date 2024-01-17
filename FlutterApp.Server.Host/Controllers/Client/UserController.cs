@@ -4,6 +4,8 @@ using FlutterApp.Server.Client.Codec;
 using FlutterApp.Server.Client.Payload.User;
 using FlutterApp.Server.Client.User;
 using FlutterApp.Server.Database;
+using FlutterApp.Server.Database.User;
+using FlutterApp.Server.UseCase;
 using FlutterApp.Server.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,12 +15,13 @@ namespace FlutterApp.Server.Host.Controllers.Client;
 
 public class UserController : AbstractClientController<UserController>
 {
-    public UserController(ILogger<UserController> logger, IDatabaseContainer db) : base(logger, db)
+    public UserController(ILogger<UserController> logger, IUseCaseContainer useCase, IDatabaseContainer db) : base(logger, useCase, db)
     {
     }
 
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<GetOne.Response> GetOneUser([FromBody] GetOne request)
     {
         var model = await Db.UserRepository.GetOne(request.UserId);
