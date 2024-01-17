@@ -33,7 +33,32 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddControllers();
+
         ConfigureSwagger(services);
+        
+        services.AddCors
+        (
+            options =>
+            {
+                options.AddPolicy
+                (
+                    "CorsPolicy",
+                    policy =>
+                        policy.WithOrigins(Configuration.GetSection("AllowedHosts").Value)
+                            .WithMethods("POST", "GET", "DELETE", "OPTIONS")
+                            .WithHeaders("*")
+                );
+                options.AddPolicy
+                (
+                    "apiDocumentation",
+                    policy =>
+                        policy.WithOrigins("*")
+                            .WithMethods("POST", "GET", "DELETE")
+                            .WithHeaders("*")
+                );
+            }
+        );
         
         Type typeOfContent = typeof(Startup);
         services.AddDbContext<PostgreSqlContext>(
@@ -59,7 +84,6 @@ public class Startup
             firebaseService)
         );
         
-        services.AddControllers();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
