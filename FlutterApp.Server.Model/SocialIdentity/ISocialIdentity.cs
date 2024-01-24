@@ -6,7 +6,5 @@ public interface ISocialIdentity
     
     string Uid { get; set; }
     
-    string SocialUid { get; set; }
-    
     SocialType SocialType { get; set; }
 }

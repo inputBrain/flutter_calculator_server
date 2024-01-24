@@ -14,9 +14,9 @@ public class SocialIdentityRepository : AbstractRepository<SocialIdentityModel>,
     }
     
     
-    public async Task<SocialIdentityModel> Create(int userId, string uid, string socialUid, SocialType socialType, DateTime createdAt)
+    public async Task<SocialIdentityModel> Create(int userId, string uid, SocialType socialType, DateTime createdAt)
     {
-        var model = SocialIdentityModel.CreateModel(userId, uid, socialUid, socialType, createdAt);
+        var model = SocialIdentityModel.CreateModel(userId, uid, socialType, createdAt);
 
         var result = await CreateModelAsync(model);
         if (result == null)
@@ -31,7 +31,7 @@ public class SocialIdentityRepository : AbstractRepository<SocialIdentityModel>,
     public async Task<(SocialIdentityModel?, UserModel?)> FindByUid(string uid)
     {
         var query = DbModel.Include(x => x.User).ThenInclude(x => x.Premium);
-
+        
         var model = await query.FirstOrDefaultAsync(_ => _.Uid == uid);
         if (model == null)
         {

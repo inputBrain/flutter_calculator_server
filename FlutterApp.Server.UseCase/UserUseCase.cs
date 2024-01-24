@@ -42,12 +42,12 @@ public class UserUseCase : IUserUseCase
         var user = await _socialIdentityRepository.FindByUid(socialUser.Uid);
         if (user.Item1 == null && user.Item2 == null)
         {
-            var userModel = await _userRepository.Create(socialUser.FirstName, socialUser.LastName, socialUser.PhoneNumber, DateTime.Now);
+            var userModel = await _userRepository.Create(socialUser.FirstName, socialUser.LastName, socialUser.AvatarUrl, socialUser.PhoneNumber, DateTime.Now);
+            
             
              user.Item1 = await _socialIdentityRepository.Create(
                 userModel.Id, 
                 socialUser.Uid,
-                user.Item1.SocialUid,
                 SocialType.Google,
                 DateTime.Now
             );

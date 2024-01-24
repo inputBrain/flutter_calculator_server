@@ -19,21 +19,18 @@ public class SocialIdentityModel : AbstractModel, ISocialIdentity
 
     public string Uid { get; set; }
 
-    public string SocialUid { get; set; }
-
     public SocialType SocialType { get; set; }
 
     [DataType(DataType.Date)]
     public DateTime CreatedAt { get; set; }
 
 
-    public static SocialIdentityModel CreateModel(int userId, string uid, string socialUid, SocialType socialType, DateTime createdAt)
+    public static SocialIdentityModel CreateModel(int userId, string uid, SocialType socialType, DateTime createdAt)
     {
         return new SocialIdentityModel
         {
             UserId = userId,
             Uid = uid,
-            SocialUid = socialUid,
             SocialType = socialType,
             CreatedAt = createdAt,
         };

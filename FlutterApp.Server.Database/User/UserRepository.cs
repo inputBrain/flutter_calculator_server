@@ -11,9 +11,9 @@ public class UserRepository : AbstractRepository<UserModel>, IUserRepository
     }
     
     
-    public async Task<UserModel?> Create(string? firstName, string? lastName, string? phone, DateTime createdAt)
+    public async Task<UserModel?> Create(string? firstName, string? lastName, string? avatarUrl, string? phone, DateTime createdAt)
     {
-        var model = UserModel.CreateModel(firstName, lastName, phone, createdAt);
+        var model = UserModel.CreateModel(firstName, lastName, avatarUrl, phone, createdAt);
 
         var result = await CreateModelAsync(model);
         if (result == null)

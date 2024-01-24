@@ -20,7 +20,7 @@ public class UserController : AbstractClientController<UserController>
     }
 
 
-    [HttpGet]
+    [HttpPost]
     [AllowAnonymous]
     public async Task<GetOne.Response> GetOneUser([FromBody] GetOne request)
     {
@@ -37,7 +37,7 @@ public class UserController : AbstractClientController<UserController>
     [AllowAnonymous]
     public async Task<CreateUser.Response> CreateUser([FromBody] CreateUser request)
     {
-        var model = await Db.UserRepository.Create(request.FirstName, request.LastName, request.Phone, DateTime.Now);
+        var model = await Db.UserRepository.Create(request.FirstName, request.LastName, request.AvatarUrl, request.Phone, DateTime.Now);
 
         return new CreateUser.Response
         {

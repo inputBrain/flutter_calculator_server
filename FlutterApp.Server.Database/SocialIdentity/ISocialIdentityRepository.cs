@@ -10,7 +10,6 @@ public interface ISocialIdentityRepository
     Task<SocialIdentityModel> Create(
         int userId,
         string uid,
-        string socialUid,
         SocialType socialType,
         DateTime createdAt
     );

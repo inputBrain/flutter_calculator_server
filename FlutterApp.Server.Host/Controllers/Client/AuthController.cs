@@ -25,6 +25,7 @@ public class AuthController : AbstractClientController<AuthController>
    
     [HttpPost]
     [AllowAnonymous]
+    [Consumes("application/json")]
     [ProducesResponseType(typeof(AuthByFirebase.Response), 200)]
     public async Task<IActionResult> AuthByFirebase([FromBody] AuthByFirebase request)
     {

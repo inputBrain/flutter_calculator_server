@@ -15,6 +15,8 @@ public class UserModel : AbstractModel
     public string? FirstName { get; set; }
     
     public string? LastName { get; set; }
+
+    public string? AvatarUrl { get; set; }
     
     public string? Phone { get; set; }
     
@@ -27,12 +29,13 @@ public class UserModel : AbstractModel
     public DateTime CreatedAt { get; set; }
 
 
-    public static UserModel CreateModel(string? firstName, string? lastName, string? phone, DateTime createdAt)
+    public static UserModel CreateModel(string? firstName, string? lastName, string? avatarUrl, string? phone, DateTime createdAt)
     {
         return new UserModel
         {
             FirstName = firstName,
             LastName = lastName,
+            AvatarUrl = avatarUrl,
             Phone = phone,
             HasPremium = false,
             CreatedAt = createdAt
