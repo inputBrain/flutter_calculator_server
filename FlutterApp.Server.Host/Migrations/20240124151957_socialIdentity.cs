@@ -20,7 +20,6 @@ namespace FlutterApp.Server.Host.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<int>(type: "integer", nullable: false),
                     Uid = table.Column<string>(type: "text", nullable: false),
-                    SocialUid = table.Column<string>(type: "text", nullable: false),
                     SocialType = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },

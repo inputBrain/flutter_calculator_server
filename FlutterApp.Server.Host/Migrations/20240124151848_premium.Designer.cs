@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlutterApp.Server.Host.Migrations
 {
     [DbContext(typeof(PostgreSqlContext))]
-    [Migration("20240115145114_user")]
-    partial class user
+    [Migration("20240124151848_premium")]
+    partial class premium
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,31 @@ namespace FlutterApp.Server.Host.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("FlutterApp.Server.Database.User.Premium.PremiumModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("PremiumEndedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("PremiumStartedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Premium");
+                });
+
             modelBuilder.Entity("FlutterApp.Server.Database.User.UserModel", b =>
                 {
                     b.Property<int>("Id")
@@ -32,6 +57,9 @@ namespace FlutterApp.Server.Host.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AvatarUrl")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -51,6 +79,22 @@ namespace FlutterApp.Server.Host.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("FlutterApp.Server.Database.User.Premium.PremiumModel", b =>
+                {
+                    b.HasOne("FlutterApp.Server.Database.User.UserModel", "User")
+                        .WithOne("Premium")
+                        .HasForeignKey("FlutterApp.Server.Database.User.Premium.PremiumModel", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FlutterApp.Server.Database.User.UserModel", b =>
+                {
+                    b.Navigation("Premium");
                 });
 #pragma warning restore 612, 618
         }

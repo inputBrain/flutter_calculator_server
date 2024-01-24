@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlutterApp.Server.Host.Migrations
 {
     [DbContext(typeof(PostgreSqlContext))]
-    [Migration("20240115145906_socialIdentity")]
+    [Migration("20240124151957_socialIdentity")]
     partial class socialIdentity
     {
         /// <inheritdoc />
@@ -38,10 +38,6 @@ namespace FlutterApp.Server.Host.Migrations
 
                     b.Property<int>("SocialType")
                         .HasColumnType("integer");
-
-                    b.Property<string>("SocialUid")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("Uid")
                         .IsRequired()
@@ -90,6 +86,9 @@ namespace FlutterApp.Server.Host.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AvatarUrl")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");

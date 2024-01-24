@@ -36,10 +36,6 @@ namespace FlutterApp.Server.Host.Migrations
                     b.Property<int>("SocialType")
                         .HasColumnType("integer");
 
-                    b.Property<string>("SocialUid")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Uid")
                         .IsRequired()
                         .HasColumnType("text");
@@ -87,6 +83,9 @@ namespace FlutterApp.Server.Host.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AvatarUrl")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
