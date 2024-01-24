@@ -9,8 +9,9 @@ public static class UserCodec
         return new Payload.User.User()
         {
             Id = dbModel.Id,
-            FirstName = dbModel.FirstName,
-            LastName = dbModel.LastName,
+            FirstName = dbModel.FirstName ?? "",
+            LastName = dbModel.LastName ?? "",
+            AvatarUrl = dbModel.AvatarUrl ?? "",
             HasPremium = dbModel.HasPremium
         };
     }
