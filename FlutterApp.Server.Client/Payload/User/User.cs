@@ -14,5 +14,8 @@ public class User
     public string LastName { get; set; }
     
     [Required]
+    public string AvatarUrl { get; set; }
+    
+    [Required]
     public bool HasPremium { get; set; }
 }
